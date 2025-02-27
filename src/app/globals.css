@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: black !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  padding: 20px !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  /* Ajuste a cor conforme necessário */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  /* Ajuste a cor conforme necessário */
+  font-size: 20px !important;
+}
+
+.custom-radio {
+  appearance: none; /* Remove o estilo padrão */
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000; /* Cor da borda */
+  border-radius: 4px; /* Controle da curvatura: 0 para totalmente quadrado */
+  outline: none;
+  cursor: pointer;
+}
+
+.custom-radio:checked {
+  background-color: black; /* Cor de fundo quando selecionado */
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .btn-primary {
+    @apply py-2 px-10 text-white bg-blue-500 transition-all hover:bg-blue-600 shadow  shadow-blue-400 rounded cursor-pointer;
+  }
+  .btn-black {
+    @apply py-2 px-10 text-white bg-black transition-all hover:bg-white hover:text-black shadow border border-black rounded cursor-pointer;
+  }
+  .btn-black-o {
+    @apply py-2 px-10 text-black bg-white transition-all hover:bg-black hover:text-white shadow border border-black rounded cursor-pointer;
+  }
+
+  .btn-primary-i {
+    @apply py-2 px-10 text-blue-500 border border-blue-500 bg-white transition-all hover:bg-blue-500 hover:text-white hover:border-blue-300 shadow rounded cursor-pointer;
+  }
+
+  .btn-green {
+    @apply py-2 px-10 text-white bg-emerald-700 transition-all hover:bg-emerald-900 rounded cursor-pointer;
+  }
+
+  .btn-green-o {
+    @apply py-2 px-10 text-emerald-600 bg-white border border-emerald-600 transition-all hover:bg-emerald-100  shadow-emerald-400 rounded cursor-pointer;
+  }
+
+  .btn-red {
+    @apply py-2 px-10 text-white bg-red-500 transition-all hover:bg-red-600 shadow  shadow-red-400 rounded cursor-pointer;
+  }
+  .btn-red-o {
+    @apply py-2 px-10 border border-red-500 text-red-500 bg-white transition-all hover:bg-red-100 rounded cursor-pointer;
+  }
+
+  .txt-input {
+    @apply w-full px-1 py-2 border rounded dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300;
+  }
+
+  .txt-label {
+    @apply absolute text-gray-600 z-10 px-1 ml-3 -mt-2 text-sm bg-white dark:bg-gray-900 dark:text-gray-300 rounded;
+  }
+
+  .form-section {
+    @apply px-3 py-5 m-2 border dark:border-gray-600 rounded-lg shadow-sm;
+  }
+
+  .form-label {
+    @apply absolute z-10 px-1 ml-3 -mt-1 text-sm text-gray-500  bg-white rounded dark:bg-gray-800 dark:text-gray-300;
+  }
+
+  .checkbox {
+    @apply w-5 h-5 border-2 border-blue-200 focus:outline-none rounded-xl;
+  }
+}
+
+/*Loading*/
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
