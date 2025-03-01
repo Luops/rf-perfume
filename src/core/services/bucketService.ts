@@ -21,7 +21,7 @@ export async function deleteImages(pictureIds: string[]): Promise<boolean | null
     if(res.error){
       return false;
     }
-    supabase.storage.from('clothes-bucket').remove(pictureIds);
+    supabase.storage.from('moon-bucket').remove(pictureIds);
   })
   return true;
 }
@@ -29,7 +29,7 @@ export async function deleteImages(pictureIds: string[]): Promise<boolean | null
 async function upload(file: File, productId: number, type: ImageType): Promise<boolean | string> {
   const uuid = uuidv4();
   await supabase.storage
-    .from("clothes-bucket")
+    .from("moon-bucket")
     .upload(`/products/${uuid}`, file)
     .then(async (res) => {
       await supabase.from("pictures").insert({
@@ -51,7 +51,7 @@ export async function updateProfileImage(
   productId: number,
   pictureId?: string
 ): Promise<boolean | string> {
-  const storage = supabase.storage.from("clothes-bucket");
+  const storage = supabase.storage.from("moon-bucket");
   const hasValue = await hasProfilePicture(productId);
   if (hasValue) {
     await storage.update(`/products/${pictureId}`, file).then(async (res) => {
@@ -90,7 +90,7 @@ async function hasProfilePicture(productId: number): Promise<boolean | null> {
 }
 
 export function loadImageUrl(pictureId: string): string {
-  return `https://jbeevpdahiikggtjfioq.supabase.co/storage/v1/object/public/clothes-bucket/products/${pictureId}`;
+  return `https://ieuyxhqdvesyzcwoppcm.supabase.co/storage/v1/object/public/moon-bucket/products/${pictureId}`;
 }
 
 export async function loadProfileImage(productId: number): Promise<Image | null> {
