@@ -172,7 +172,10 @@ function ProductSection() {
   };
 
   return (
-    <section className="w-full max-[480px]:px-2 max-[860px]:px-4 px-12 relative">
+    <section
+      id="products"
+      className="w-full max-[480px]:px-2 max-[860px]:px-4 px-12 relative"
+    >
       <form
         action=""
         className="w-full flex gap-5 border-b border-[#f2f2f2] relative"

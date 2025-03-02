@@ -67,7 +67,7 @@ const SearchLabel = () => {
                     {...field}
                     value={field.value || ""}
                     onChange={(e) => form.setValue("product", e.target.value)}
-                    className="py-4 border-none shadow-none focus-visible:ring-0 max-[480px]:text-sm"
+                    className="py-4 border-none shadow-none focus-visible:ring-0 max-[480px]:text-sm text-white placeholder:text-white"
                   />
                 </FormControl>
                 <FormMessage />
@@ -77,7 +77,7 @@ const SearchLabel = () => {
                   type="submit"
                   className="!h-fit p-2 bg-transparent hover:bg-transparent shadow-none !mt-0"
                 >
-                  <SearchIcon size={24} className="text-black hover:text-gray-500 transition-all ease-in-out duration-300" />
+                  <SearchIcon size={24} className="text-white" />
                 </button>
               </FormItem>
             )}
