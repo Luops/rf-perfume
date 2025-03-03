@@ -126,17 +126,17 @@ function Header() {
   };
 
   return (
-    <header className="w-full flex z-50 sticky top-0 flex-col items-center pb-4 justify-between gap-5">
+    <header className="w-full flex z-50 sticky top-0 flex-col items-center pb-4 justify-between">
       <div
         className={`${
           isLogged && user ? "flex" : "hidden"
-        } w-full flex items-center justify-between bg-[#010101] text-white px-4 py-2`}
+        } w-full flex items-center justify-center bg-[#010101] text-white px-4 py-2`}
       >
         <div
-          className={`flex w-full gap-1 flex-row justify-between max-[480px]:text-[0.6rem] text-xs text-gray-200`}
+          className={`flex items-center justify-end w-full gap-1 max-[480px]:text-[0.6rem] text-xs text-gray-200`}
         >
           {isLogged && user && (
-            <div className="flex max-[580px]:flex-col flex-row max-[580px]:items-end gap-1">
+            <div className="flex text-center items-center justify-center gap-1">
               {user ? (
                 <h3
                   className="hover:text-teal-300 cursor-pointer"
@@ -160,7 +160,7 @@ function Header() {
       <div className="w-full bg-[#81D8D0]">
         <div className="w-full flex flex-row items-center justify-between py-2 px-4 border-b-[1px] border-[#dadada] shadow-md">
           {showSkeleton ? (
-            <div className="w-full flex items-center justify-between">
+            <div className="w-full flex items-center justify-between py-4">
               <Skeleton className="h-10 w-20" />
               <Skeleton className="h-10 w-40" />
               <Skeleton className="h-10 w-20" />
@@ -191,8 +191,8 @@ function Header() {
                     </li>
                   ))}
                   {user?.role === "authenticated" && (
-                    <li className="font-semibold max-[1440px]:text-sm text-md transition ease-in-out duration-300 hover:text-gray-500 border-b-2 border-transparent hover:border-black">
-                      <Link href={"/painel"}>Painel</Link>
+                    <li className="text-white font-semibold max-[1440px]:text-sm text-md transition ease-in-out duration-300 border-b-2 border-transparent hover:border-white">
+                      <Link href={"/painel/produtos"}>Painel</Link>
                     </li>
                   )}
                 </ul>
@@ -213,22 +213,14 @@ function Header() {
                   {isWideAside ? (
                     <X
                       className={`absolute ${
-                        isLogged
-                          ? windowWidth < 581
-                            ? "top-5"
-                            : "top-0"
-                          : "top-0"
+                        isLogged ? windowWidth < 861 && "top-8" : "top-0"
                       } right-0 ${isWideAside && "text-white"} `}
                       size={30}
                     />
                   ) : (
                     <Menu
                       className={`${
-                        isLogged
-                          ? windowWidth < 581
-                            ? "mt-5"
-                            : "mt-0"
-                          : "mt-0"
+                        isLogged ? windowWidth < 861 && "mt-8" : "mt-0"
                       }`}
                       size={30}
                     />
@@ -259,7 +251,7 @@ function Header() {
                         toggleAsideWidth();
                       }}
                     >
-                      <Link href={"/painel"}>Painel</Link>
+                      <Link href={"/painel/produtos"}>Painel</Link>
                     </li>
                   )}
                 </ul>

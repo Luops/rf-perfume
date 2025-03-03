@@ -9,7 +9,7 @@ import LaVie from "@/assets/images/Brand-La-Vie.png";
 
 function FeaturedSection() {
   return (
-    <section className="w-full max-[480px]:px-2 max-[860px]:px-4 px-12">
+    <section className="w-full max-[480px]:px-2 max-[860px]:px-4 px-6">
       <div className="w-full min-[300px]:!h-[500px] min-[360px]:!h-[550px] min-[861px]:!h-[450px] min-[1441px]:!h-[500px] flex max-[860px]:flex-col-reverse items-center justify-between bg-[#f5f5f5] drop-shadow-[0px_4px_4px_rgba(0,0,0,0.05)] border border-[#f2f2f2]">
         <div className="max-[860px]:w-full w-1/2 h-full flex max-[860px]:justify-center justify-center">
           <Image

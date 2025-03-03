@@ -49,7 +49,7 @@ function ProductFiltred({ dto }: { dto: ProductDTO }) {
             width={500} // Ajuste um tamanho adequado
             height={500} // Defina uma altura real
             quality={100} // Mantém a máxima qualidade
-            className="w-full max-[360px]:h-[350px] max-[500px]:h-[250px] max-[640px]:h-[350px] max-[940px]:h-[300px] h-[400px] rounded object-cover"
+            className="w-full max-[360px]:h-[350px] max-[500px]:h-[250px] max-[640px]:h-[350px] max-[940px]:h-[300px] h-[350px] rounded object-cover"
           />
         )}
 

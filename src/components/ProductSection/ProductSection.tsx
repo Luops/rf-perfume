@@ -174,7 +174,7 @@ function ProductSection() {
   return (
     <section
       id="products"
-      className="w-full max-[480px]:px-2 max-[860px]:px-4 px-12 relative"
+      className="w-full max-[480px]:px-2 max-[860px]:px-4 px-6 relative"
     >
       <form
         action=""
@@ -397,7 +397,9 @@ function ProductSection() {
               </div>
             </div>
           ) : (
-            <h3 className="text-gray-500">Nenhum produto encontrado.</h3>
+            <div className="flex flex-col h-[300px] mt-5 text-center items-start justify-start">
+              <h3 className="text-gray-500">Nenhum produto encontrado.</h3>
+            </div>
           )}
         </div>
       )}
