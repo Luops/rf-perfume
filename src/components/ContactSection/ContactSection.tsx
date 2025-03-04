@@ -1,12 +1,18 @@
 import React from "react";
-import Link from "next/link";
 
 // Components
 
 // Icons
 import { FaWhatsapp } from "react-icons/fa";
+import { Button } from "../ui/button";
 
 function ContactSection() {
+  // Função para abrir o WhatsApp com uma mensagem personalizada
+  const handleWhatsAppClick = () => {
+    const numero = "5551984422056";
+    const url = `https://wa.me/${numero}`;
+    window.open(url, "_blank");
+  };
   return (
     <section
       id="contact"
@@ -20,13 +26,13 @@ function ContactSection() {
           Entrar em contato
         </h4>
         <div className="flex gap-2 items-center">
-          <p className="font-semibold text-lg">(51)9 9999-9999</p>
-          <Link
-            href={"/"}
-            className="text-black hover:bg-gray-200 transition-all ease-in-out duration-300 border-[#d7d7d7] border-[2px] px-2 py-1 rounded font-semibold uppercase font-oswald"
+          <p className="font-semibold text-lg">(51)9 8442-2056</p>
+          <Button
+            onClick={handleWhatsAppClick}
+            className="text-black bg-white hover:bg-gray-200 transition-all ease-in-out duration-300 border-[#d7d7d7] border-[2px] px-2 py-1 rounded font-semibold uppercase font-oswald"
           >
             Chamar
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

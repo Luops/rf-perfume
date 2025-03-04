@@ -11,6 +11,8 @@ import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { fetchLogout, fetchSession } from "@/store/slices/authSlice";
 
+// Core
+
 // Images
 import Logo from "@/assets/images/Logo-Moon-Perfumes-Branco-Sem-Fundo.png";
 
@@ -40,13 +42,14 @@ function Header() {
       url: "/",
       key: "home",
       type: "link",
-    },
+    } /*
     {
       name: "Promoções",
       url: "#promos",
       key: "promos",
       type: "anchor",
-    },
+      status: promoList.length === 0, // O link só aparece se NÃO houver promoções
+    },*/,
     {
       name: "Produtos",
       url: "#products",
@@ -60,6 +63,7 @@ function Header() {
       type: "anchor",
     },
   ];
+  console.log(links);
 
   // State para ver se foi clicado em alguma opção do Header
   const handleNavigation = (sectionId: string) => {

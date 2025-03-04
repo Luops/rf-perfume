@@ -9,7 +9,7 @@ import Logo from "@/assets/images/logo-semfundo.svg";
 
 function Footer() {
   return (
-    <footer className="w-full py-10 flex flex-col items-center justify-center bg-black/90">
+    <footer className="w-full py-10 flex flex-col items-center justify-center bg-[#81D8D0]">
       <Link
         href="https://www.ellyon.com.br/"
         target="_blank"

@@ -247,7 +247,7 @@ const NovoProduto = () => {
           <button
             type="button"
             onClick={() => navigator.back()}
-            className="max-[680px]:w-full w-[220px] py-2 px-10 mx-2 btn-black"
+            className="max-[680px]:w-full w-[220px] py-2 px-10 mx-2 text-white bg-red-500 transition-all hover:bg-red-600 shadow shadow-red-400 rounded"
           >
             Voltar
           </button>
