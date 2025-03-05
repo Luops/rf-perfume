@@ -37,9 +37,9 @@ function ProductRow(props: { dto: ProductDTO }) {
 
   const getGenderName = (gender: string | null | undefined) => {
     const genderMap: Record<string, string> = {
-      [Gender.Masculino]: "Masculino",
-      [Gender.Feminino]: "Feminino",
-      [Gender.Unissex]: "Unissex",
+      [Gender.Masculino]: "MASCULINO",
+      [Gender.Feminino]: "FEMININO",
+      [Gender.Unissex]: "UNISSEX",
       [Gender.AllGender]: "Todos",
     };
 

@@ -22,9 +22,6 @@ import { Skeleton } from "../ui/skeleton";
 // Icons
 import { Menu, X } from "lucide-react";
 
-// Components
-import Search from "./Search/Search";
-
 function Header() {
   // Abrir e fechar o aside
   const [isWideAside, setIsWideAside] = React.useState(false);
@@ -162,7 +159,7 @@ function Header() {
         </div>
       </div>
       <div className="w-full bg-[#81D8D0]">
-        <div className="w-full flex flex-row items-center justify-between py-2 px-4 border-b-[1px] border-[#dadada] shadow-md">
+        <div className="w-full flex flex-row mx-auto items-center justify-between py-2 px-[4rem] border-b-[1px] border-[#dadada] shadow-md">
           {showSkeleton ? (
             <div className="w-full flex items-center justify-between py-4">
               <Skeleton className="h-10 w-20" />
@@ -174,9 +171,9 @@ function Header() {
               <Image src={Logo} alt="Logo" width={130} height={130} />
               {/*Desktop*/}
               <nav
-                className={`max-[860px]:hidden max-[1440px]:-mr-[7%] -mr-[9%]`}
+                className={`w-full max-[860px]:hidden `}
               >
-                <ul className="flex flex-row items-center justify-between gap-3">
+                <ul className="w-full flex flex-row items-center justify-end gap-3">
                   {links.map((el, index) => (
                     <li
                       key={index}
@@ -201,7 +198,6 @@ function Header() {
                   )}
                 </ul>
               </nav>
-              <Search />
               {/*Mobile*/}
               <nav className="hidden max-[860px]:block">
                 <button

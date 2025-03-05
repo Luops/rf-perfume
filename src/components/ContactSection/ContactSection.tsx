@@ -22,7 +22,7 @@ function ContactSection() {
         <i>
           <FaWhatsapp className="max-[480px]:text-[100px] text-[150px]" />
         </i>
-        <h4 className="font-bold uppercase font-sans text-4xl">
+        <h4 className="font-bold uppercase font-sans text-4xl text-center">
           Entrar em contato
         </h4>
         <div className="flex gap-2 items-center">

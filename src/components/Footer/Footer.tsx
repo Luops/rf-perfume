@@ -16,7 +16,7 @@ function Footer() {
         className="flex flex-col items-center gap-5"
       >
         <Image src={Logo} alt="Logo Ellyon" className="w-[150px]" />
-        <h3 className="text-white tracking-wide">
+        <h3 className="text-white tracking-wide text-center">
           Desenvolvido por Ellyon ©{new Date().getFullYear()} | Todos os
           direitos reservados.
         </h3>
