@@ -1,7 +1,13 @@
 import { supabase } from "@/lib/supabase";
 import { Product } from "../models/Product";
 import { Gender } from "../models/enums/Gender";
-import { deleteData, getUserId, insertData, selectAll, updateData } from "./dbService";
+import {
+  deleteData,
+  getUserId,
+  insertData,
+  selectAll,
+  updateData,
+} from "./dbService";
 import { ProductDTO } from "../models/DTOs/ProductDTO";
 import { loadAllImages, loadProfileImage } from "./bucketService";
 import { ImageType } from "../models/enums/ImageType";
@@ -25,7 +31,6 @@ async function getAllDtos(dbProducts: Product[]): Promise<ProductDTO[] | null> {
     products.push({
       product: p,
       profileImage: profileImage!,
-      images: images!.filter((prod) => prod.productId === p!.id && prod.type === ImageType.Normal),
     });
   }
 
@@ -42,7 +47,9 @@ export async function getAllProducts(): Promise<ProductDTO[] | null> {
   return await getAllDtos(dbProducts!);
 }
 
-export async function searchProducts(search: string): Promise<ProductDTO[] | null> {
+export async function searchProducts(
+  search: string
+): Promise<ProductDTO[] | null> {
   const query = supabase
     .from(tableName)
     .select("*, category:categories(*)")
@@ -77,13 +84,9 @@ export async function getProduct(id: number): Promise<ProductDTO | null> {
   }
 
   const profileImage = await loadProfileImage(data.id!);
-  const images = await loadAllImages().then((res) =>
-    res?.filter((prod) => prod.productId === data.id! && prod.type === ImageType.Normal)
-  );
   const productDto: ProductDTO = {
     product: data,
     profileImage: profileImage!,
-    images: images!,
   };
 
   console.log(productDto);
@@ -123,9 +126,11 @@ export async function getProductsByCategoryAndGender(
     return null;
   }
 
-  return await getAllDtos(data)
+  return await getAllDtos(data);
 }
 
-export async function deleteProductAsync(id: number): Promise<ProductDTO | null> {
+export async function deleteProductAsync(
+  id: number
+): Promise<ProductDTO | null> {
   return await deleteData<ProductDTO>(id, tableName);
 }

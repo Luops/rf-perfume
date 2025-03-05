@@ -3,7 +3,8 @@ import React, { useState } from "react";
 // Store
 import { useAppDispatch, useAppSelector } from "@/store/store";
 
-// Services
+// Core
+import { ProductDTO } from "@/core/models/DTOs/ProductDTO";
 
 // Slice
 import { fetchProductsByPromo } from "@/store/slices/productSlice";
@@ -25,7 +26,6 @@ import "../../app/globals.css";
 
 // import required modules
 import { Navigation } from "swiper/modules";
-import { ProductDTO } from "@/core/models/DTOs/ProductDTO";
 
 function PromoSection() {
   const [loading, setLoading] = useState(true);
@@ -45,7 +45,7 @@ function PromoSection() {
     fetchPromoProducts();
   }, [dispatch]);
   return (
-    <section id="promos" className="w-full max-[480px]:px-2 max-[860px]:px-4 px-12">
+    <section id="promos" className={`${promoList.length > 0 ? "flex flex-col" : "hidden"} w-full max-[480px]:px-2 max-[860px]:px-4 px-6`}>
       <div className="w-full flex flex-col items-start justify-center bg-[#f5f5f5] drop-shadow-[0px_4px_4px_rgba(0,0,0,0.05)] border border-[#f2f2f2] pb-4">
         <h4 className="w-full flex items-center h-20 text-white text-3xl font-oswald bg-black px-3 uppercase tracking-[1px]">
           Promoções

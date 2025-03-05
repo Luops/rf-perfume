@@ -22,17 +22,11 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "../ui/button";
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../app/globals.css";
-
-// import required modules
-import { Navigation } from "swiper/modules";
 
 function ProductSection() {
   const [loading, setLoading] = React.useState(true);
@@ -44,10 +38,12 @@ function ProductSection() {
   const [appliedFilters, setAppliedFilters] = React.useState<
     { type: string; value: string }[]
   >([]);
+  console.log("Filtros aplicados:", appliedFilters);
 
   // Produtos
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.products.productList) || [];
+  console.log("Produtos:", products);
 
   React.useEffect(() => {
     dispatch(fetchAllProducts());
@@ -63,7 +59,7 @@ function ProductSection() {
         gender:
           selectedGender === "allGender"
             ? Gender.AllGender
-            : (selectedGender as Gender), // Converta para o tipo correto
+            : (selectedGender as Gender),
       };
       console.log("Enviando filtros:", data);
       await dispatch(fetchAllProductsByCategoryAndGender(data));
@@ -78,7 +74,7 @@ function ProductSection() {
   const handleGenderChange = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const value = event.target.value as Gender; // Cast para o tipo Gender
+    const value = event.target.value as Gender;
     setSelectedGender(value);
 
     if (value === Gender.AllGender) {
@@ -107,20 +103,32 @@ function ProductSection() {
     }
   };
 
+  // Coloca os generos em português
+  const genderMap: Record<Gender, string> = {
+    [Gender.AllGender]: "Todos",
+    [Gender.Masculino]: "Masculino",
+    [Gender.Feminino]: "Feminino",
+    [Gender.Unissex]: "Unissex",
+  };
   // Atualiza os filtros aplicados, removendo duplicatas e substituindo valores
   const updateFilters = (type: string, value: string) => {
+    const translatedValue =
+      type === "gender" ? genderMap[value as Gender] : value;
+
     setAppliedFilters((prevFilters) => {
       const existingFilterIndex = prevFilters.findIndex(
         (filter) => filter.type === type
       );
+
       if (existingFilterIndex !== -1) {
         // Atualizar o filtro existente
         const updatedFilters = [...prevFilters];
-        updatedFilters[existingFilterIndex] = { type, value };
+        updatedFilters[existingFilterIndex] = { type, value: translatedValue };
         return updatedFilters;
       }
+
       // Adicionar novo filtro
-      return [...prevFilters, { type, value }];
+      return [...prevFilters, { type, value: translatedValue }];
     });
   };
 
@@ -172,7 +180,10 @@ function ProductSection() {
   };
 
   return (
-    <section className="w-full max-[480px]:px-2 max-[860px]:px-4 px-12 relative">
+    <section
+      id="products"
+      className="w-full max-[480px]:px-2 max-[860px]:px-4 px-6 relative"
+    >
       <form
         action=""
         className="w-full flex gap-5 border-b border-[#f2f2f2] relative"
@@ -199,44 +210,47 @@ function ProductSection() {
                   type="radio"
                   name="gender"
                   id="allGender"
-                  value="allGender"
-                  checked={selectedGender === "allGender"}
+                  value={Gender.AllGender}
+                  checked={selectedGender === Gender.AllGender}
                   onChange={handleGenderChange}
                   className="custom-radio"
                 />
                 <span className="text-[1rem]">Todos</span>
               </label>
+
               <label htmlFor="masculino" className="flex items-center gap-2">
                 <input
                   type="radio"
                   name="gender"
                   id="masculino"
-                  value="masculino"
-                  checked={selectedGender === "masculino"}
+                  value={Gender.Masculino}
+                  checked={selectedGender === Gender.Masculino}
                   onChange={handleGenderChange}
                   className="custom-radio"
                 />
                 <span className="text-[1rem]">Masculino</span>
               </label>
+
               <label htmlFor="feminino" className="flex items-center gap-2">
                 <input
                   type="radio"
                   name="gender"
                   id="feminino"
-                  value="feminino"
-                  checked={selectedGender === "feminino"}
+                  value={Gender.Feminino}
+                  checked={selectedGender === Gender.Feminino}
                   onChange={handleGenderChange}
                   className="custom-radio"
                 />
                 <span className="text-[1rem]">Feminino</span>
               </label>
+
               <label htmlFor="unissex" className="flex items-center gap-2">
                 <input
                   type="radio"
                   name="gender"
                   id="unissex"
-                  value="unissex"
-                  checked={selectedGender === "unissex"}
+                  value={Gender.Unissex}
+                  checked={selectedGender === Gender.Unissex}
                   onChange={handleGenderChange}
                   className="custom-radio"
                 />
@@ -327,16 +341,16 @@ function ProductSection() {
           {products && products.length > 0 ? (
             <div className="w-full flex flex-col">
               {/* Versão Desktop */}
-              <div className="hidden min-[1028px]:flex flex-wrap items-center justify-center gap-4">
+              <ul className="flex flex-wrap items-center justify-center max-[560px]:gap-1 gap-4">
                 {products.slice(0, visibleCount).map((product) => (
                   <li key={product.product.id} className="list-none">
                     <ProductFiltred dto={product} />
                   </li>
                 ))}
-              </div>
+              </ul>
               {/* Botão "Ver mais" aparece se ainda houver produtos a serem mostrados */}
               {visibleCount < products.length && (
-                <div className="hidden min-[1028px]:flex justify-center mt-4 font-oswald tracking-wider">
+                <div className="flex justify-center mt-4 font-oswald tracking-wider">
                   <Button
                     onClick={handleLoadMore}
                     className=" text-white px-4 py-2 rounded-md  transition"
@@ -346,7 +360,7 @@ function ProductSection() {
                 </div>
               )}
               {visibleCount > 8 && (
-                <div className="hidden min-[1028px]:flex justify-center mt-4 font-oswald tracking-wider">
+                <div className="flex justify-center mt-4 font-oswald tracking-wider">
                   <Button
                     onClick={handleLoadLess}
                     className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
@@ -355,46 +369,11 @@ function ProductSection() {
                   </Button>
                 </div>
               )}
-              <div className="flex min-[1028px]:hidden">
-                <Swiper
-                  spaceBetween={30}
-                  pagination={{ clickable: true }}
-                  navigation={true}
-                  modules={[Navigation]}
-                  breakpoints={{
-                    320: {
-                      slidesPerView: 1,
-                      spaceBetween: 10,
-                    },
-                    361: {
-                      slidesPerView: 2,
-                      spaceBetween: 10,
-                    },
-                    480: {
-                      slidesPerView: 2,
-                      spaceBetween: 10,
-                    },
-                    690: {
-                      slidesPerView: 3,
-                      spaceBetween: 15,
-                    },
-                    1024: {
-                      slidesPerView: 4,
-                      spaceBetween: 30,
-                    },
-                  }}
-                  className="mySwiper w-full"
-                >
-                  {products.map((product) => (
-                    <SwiperSlide key={product.product.id}>
-                      <ProductFiltred dto={product} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
             </div>
           ) : (
-            <h3 className="text-gray-500">Nenhum produto encontrado.</h3>
+            <div className="flex flex-col h-[300px] mt-5 text-center items-start justify-start">
+              <h3 className="text-gray-500">Nenhum produto encontrado.</h3>
+            </div>
           )}
         </div>
       )}

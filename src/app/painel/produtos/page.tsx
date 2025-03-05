@@ -20,7 +20,9 @@ const Produtos = () => {
   const [loading, setLoading] = React.useState(true);
 
   const dispatch = useAppDispatch();
-  const products = useAppSelector((state) => state.products.filteredProductsList);
+  const products = useAppSelector(
+    (state) => state.products.filteredProductsList
+  );
   const categories = useAppSelector((state) => state.categories.categoryList);
 
   const formattGenderNames: Record<Gender, string> = {
@@ -171,7 +173,9 @@ const Produtos = () => {
         </form>
       </div>
       <hr className="my-3" />
-      <h3 className="text-gray-700 mt-5 font-oswald">Produtos Cadastrados: {products.length}</h3>
+      <h3 className="text-gray-700 mt-5 font-oswald">
+        Produtos Cadastrados: {products.length}
+      </h3>
 
       {loading ? (
         <div className="flex flex-col h-[322px] text-center items-center justify-center">
@@ -186,7 +190,7 @@ const Produtos = () => {
                 <th scope="col" className="px-6 py-3">
                   Imagem
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-12 py-3">
                   Nome
                 </th>
                 <th scope="col" className="px-6 py-3">
