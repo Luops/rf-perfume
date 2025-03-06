@@ -99,7 +99,7 @@ export async function deleteData<TEntity>(
     .delete()
     .eq("id", id)
     .select()
-    .returns<TEntity>();
+    .single<TEntity>();
 
   if (error) console.error("Erro no delete:", error);
   return data;
