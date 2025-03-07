@@ -2,6 +2,7 @@
 
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
+import * as Yup from "yup";
 
 // Store
 import { addCategory, fetchAllCategories } from "@/store/slices/categorySlice";
@@ -33,6 +34,9 @@ const Categorias = () => {
       color: "#000000",
       value: "",
     },
+    validationSchema: Yup.object({
+      name: Yup.string().required("Nome é obrigatório"),
+    }),
     enableReinitialize: true,
     validateOnChange: false,
     onSubmit: (values) => {
@@ -74,7 +78,9 @@ const Categorias = () => {
   }, [dispatch]);
   return (
     <div className="flex flex-col">
-      <p className="font-oswald text-gray-500 max-[560px]:text-center">Escreva abaixo o nome da categoria que deseja e clique em criar.</p>
+      <p className="font-oswald text-gray-500 max-[560px]:text-center">
+        Escreva abaixo o nome da categoria que deseja e clique em criar.
+      </p>
       <form className="w-full flex max-[560px]:flex-col flex-row max-[560px]:gap-3 mt-3">
         <div className="flex">
           <label htmlFor="name" className="txt-label">
@@ -87,6 +93,7 @@ const Categorias = () => {
             className="txt-input"
             value={formik.values.name}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur} // Garante validação ao sair do campo
           />
           <input
             type="color"
@@ -100,11 +107,15 @@ const Categorias = () => {
         <button
           type="button"
           onClick={() => formik.handleSubmit()}
+          disabled={!formik.isValid}
           className="max-[560px]:text-2xl !min-[561px]:text-md btn-primary max-[560px]:mx-0 mx-3 btn-black"
         >
           Criar categoria!
         </button>
       </form>
+      {formik.touched.name && formik.errors.name ? (
+        <div className="text-red-500 text-sm">{formik.errors.name}</div>
+      ) : null}
       <hr className="my-3" />
 
       {loading ? (

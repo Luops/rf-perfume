@@ -202,7 +202,7 @@ function Header() {
               <nav className="hidden max-[860px]:block">
                 <button
                   onClick={toggleAsideWidth}
-                  className={`top-[28px] right-4 text-white ${
+                  className={`top-[28px] right-12 text-white ${
                     windowWidth < 861
                       ? isWideAside
                         ? "fixed h-screen text-xl z-[51]"

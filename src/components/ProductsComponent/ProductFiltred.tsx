@@ -55,7 +55,7 @@ function ProductFiltred({ dto }: { dto: ProductDTO }) {
             width={500}
             height={500}
             quality={100}
-            className="w-full max-[360px]:h-[350px] max-[500px]:h-[250px] max-[640px]:h-[280px] h-[300px] rounded object-cover"
+            className="w-full max-[420px]:h-[350px] max-[500px]:h-[250px] max-[640px]:h-[280px] h-[300px] rounded object-cover"
           />
         )}
 

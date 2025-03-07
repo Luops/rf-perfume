@@ -9,13 +9,13 @@ import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { addProduct } from "@/store/slices/productSlice";
+import ProfileUploadContainer from "@/components/UploadContainer/ProfileUploadContainer";
 
 // Components
 import Loading from "@/components/Loading/Loading";
 
 // Enum
 import { Gender } from "@/core/models/enums/Gender";
-import ProfileUploadContainer from "@/components/UploadContainer/ProfileUploadContainer";
 
 const NovoProduto = () => {
   const dispatch = useAppDispatch();
@@ -123,7 +123,7 @@ const NovoProduto = () => {
                 id="name"
                 value={formik.values.name}
                 onChange={formik.handleChange}
-                className="txt-input"
+                className="txt-input min-h-14"
               />
             </div>
             <div className="my-3">
@@ -135,7 +135,7 @@ const NovoProduto = () => {
                 id="categoryId"
                 value={formik.values.categoryId}
                 onChange={formik.handleChange}
-                className="txt-input bg-white p-3"
+                className="txt-input bg-white p-3 min-h-14"
               >
                 {categories.map((el, index) => (
                   <option key={index} value={el.id}>
@@ -153,7 +153,7 @@ const NovoProduto = () => {
                 id="gender"
                 value={formik.values.gender}
                 onChange={formik.handleChange}
-                className="txt-input bg-white p-3"
+                className="txt-input bg-white p-3 min-h-14"
               >
                 {gendersNewNames.map((el, index) => (
                   <option key={index} value={el.value}>
@@ -184,20 +184,23 @@ const NovoProduto = () => {
                   value={formik.values.price}
                   onChange={formik.handleChange}
                   id="price"
-                  className="txt-input border-l-0 rounded-tl-none rounded-bl-none"
+                  className="txt-input border-l-0 rounded-tl-none rounded-bl-none min-h-14"
                 />
               </div>
             </div>
-            <div className="my-3">
-              <label htmlFor="isPromo">É promoção? </label>
-              <input
-                type="checkbox"
-                className="checkbox"
-                checked={isPromo}
-                onChange={(e) => setIsPromo(e.target.checked)}
-                name="isPromo"
-                id="isPromo"
-              />
+            <div className="flex flex-col my-3">
+              <div className="flex flex-row items-center gap-2">
+                <label htmlFor="isPromo">É promoção? </label>
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  checked={isPromo}
+                  onChange={(e) => setIsPromo(e.target.checked)}
+                  name="isPromo"
+                  id="isPromo"
+                />
+              </div>
+
               {isPromo && (
                 <div className="my-3 flex flex-row items-center">
                   <label
@@ -213,7 +216,7 @@ const NovoProduto = () => {
                     <input
                       type="number"
                       name="promoPrice"
-                      className="txt-input border-l-0 rounded-tl-none rounded-bl-none"
+                      className="txt-input border-l-0 rounded-tl-none rounded-bl-none min-h-14"
                       id="promoPrice"
                       value={formik.values.promoPrice}
                       onChange={formik.handleChange}
