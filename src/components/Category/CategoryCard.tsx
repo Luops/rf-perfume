@@ -16,8 +16,12 @@ import { Button } from "@/components/ui/button";
 
 // Icons
 import { FaTrashCan } from "react-icons/fa6";
+import { useAppDispatch } from "@/store/store";
+import { deleteCategory } from "@/store/slices/categorySlice";
 
 function CategoryCard({ category }: { category: Category }) {
+  const dispatch = useAppDispatch();
+
   // Abrir e fechar mensagem para deletar
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [categorieToDelete, setCategorieToDelete] = useState<Category | null>(
@@ -28,15 +32,9 @@ function CategoryCard({ category }: { category: Category }) {
   const handleDelete = async () => {
     if (!categorieToDelete) return;
 
-    const deleteProduct = async (id: number) => {
-      await fetch(`http://localhost:3000/api/products/${id}`, {
-        method: "DELETE",
-      });
-    };
-
     setIsDeleted(true);
     try {
-      await deleteProduct(categorieToDelete.id as number);
+      dispatch(deleteCategory(categorieToDelete.id!))
       alert(
         `A categoria "${categorieToDelete.name}" foi deletadoa com sucesso.`
       );
