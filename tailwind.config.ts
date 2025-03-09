@@ -65,7 +65,11 @@ export default {
   			oswald: [
   				'Oswald',
   				'sans-serif'
-  			]
+  			],
+			great: [
+				'Great Vibes',
+				'sans-serif'
+			]
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

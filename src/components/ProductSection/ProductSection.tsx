@@ -243,19 +243,6 @@ function ProductSection() {
                 />
                 <span className="text-[1rem]">Feminino</span>
               </label>
-
-              <label htmlFor="unissex" className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="gender"
-                  id="unissex"
-                  value={Gender.Unissex}
-                  checked={selectedGender === Gender.Unissex}
-                  onChange={handleGenderChange}
-                  className="custom-radio"
-                />
-                <span className="text-[1rem]">Unissex</span>
-              </label>
             </AccordionContent>
           </AccordionItem>
         </Accordion>

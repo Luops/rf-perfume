@@ -2,7 +2,7 @@ import { Category } from "@/core/models/Category";
 import {
   createCategory,
   getAllCategories,
-  deleteCategory as removeCategory
+  deleteCategory as removeCategory,
 } from "@/core/services/categoryService";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
@@ -39,11 +39,10 @@ export const addCategory = createAsyncThunk(
 export const deleteCategory = createAsyncThunk(
   "category/delete",
   async (id: number, thunkAPI) => {
-    return await removeCategory(id).then((res) => {
-      thunkAPI.dispatch(fetchAllCategories());
-    })
+    await removeCategory(id);
+    thunkAPI.dispatch(fetchAllCategories());
   }
-)
+);
 
 export const CategorySlice = createSlice({
   name: "categories",

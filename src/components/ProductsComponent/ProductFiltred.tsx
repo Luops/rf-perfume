@@ -29,7 +29,7 @@ function ProductFiltred({ dto }: { dto: ProductDTO }) {
   const imageSrc =
     !dto.profileImage || dto.profileImage.url.endsWith("undefined")
       ? Logo
-      : dto.profileImage.url;
+      : dto.profileImage.url
 
   // Função para abrir o WhatsApp com uma mensagem personalizada
   const handleWhatsAppClick = () => {
