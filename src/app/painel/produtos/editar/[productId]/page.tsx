@@ -5,9 +5,7 @@ import ImageContainer from "@/components/ImageContainer/ImageContainer";
 import Loading from "@/components/Loading/Loading";
 import ProfileUploadContainer from "@/components/UploadContainer/ProfileUploadContainer";
 import { Product } from "@/core/models/Product";
-import {
-  updateProfileImage,
-} from "@/core/services/bucketService";
+import { updateProfileImage } from "@/core/services/bucketService";
 import { updateProduct } from "@/core/services/productService";
 import { fetchAllCategories } from "@/store/slices/categorySlice";
 import { fetchProductById } from "@/store/slices/productSlice";
@@ -153,7 +151,7 @@ function ProdutoPage() {
                 id="name"
                 value={formik.values.name}
                 onChange={formik.handleChange}
-                className="txt-input"
+                className="txt-input min-h-14"
               />
             </div>
             <div className="my-3">
@@ -166,7 +164,7 @@ function ProdutoPage() {
                 id="categoryId"
                 value={formik.values.categoryId}
                 onChange={formik.handleChange}
-                className="txt-input bg-white p-3"
+                className="txt-input bg-white p-3 min-h-14"
               >
                 {categories.map((el, index) => (
                   <option key={index} value={el.id}>
@@ -176,7 +174,7 @@ function ProdutoPage() {
               </select>
             </div>
             <div className="my-3">
-              <label className="txt-label" htmlFor="category">
+              <label className="txt-label" htmlFor="gender">
                 Gênero
               </label>
               <select
@@ -184,7 +182,7 @@ function ProdutoPage() {
                 id="gender"
                 value={formik.values.gender}
                 onChange={formik.handleChange}
-                className="txt-input bg-white p-3"
+                className="txt-input bg-white p-3 min-h-14"
                 disabled={!edit}
               >
                 {genders.map((el, index) => (
@@ -216,21 +214,23 @@ function ProdutoPage() {
                   value={formik.values.price}
                   onChange={formik.handleChange}
                   id="price"
-                  className="txt-input border-l-0 rounded-tl-none rounded-bl-none"
+                  className="txt-input border-l-0 rounded-tl-none rounded-bl-none min-h-14"
                 />
               </div>
             </div>
-            <div className="my-3">
-              <label htmlFor="isPromo">É promoção? </label>
-              <input
-                disabled={!edit}
-                type="checkbox"
-                className="checkbox"
-                checked={formik.values.isPromo}
-                onChange={formik.handleChange}
-                name="isPromo"
-                id="isPromo"
-              />
+            <div className="flex flex-col my-3">
+              <div className="flex flex-row items-center gap-2">
+                <label htmlFor="isPromo">É promoção? </label>
+                <input
+                  disabled={!edit}
+                  type="checkbox"
+                  className="checkbox"
+                  checked={formik.values.isPromo}
+                  onChange={formik.handleChange}
+                  name="isPromo"
+                  id="isPromo"
+                />
+              </div>
               {formik.values.isPromo === true && (
                 <div className="my-3 flex flex-row items-center">
                   <label
@@ -247,7 +247,7 @@ function ProdutoPage() {
                       disabled={!edit}
                       type="number"
                       name="promoPrice"
-                      className="txt-input border-l-0 rounded-tl-none rounded-bl-none"
+                      className="txt-input border-l-0 rounded-tl-none rounded-bl-none min-h-14"
                       id="promoPrice"
                       value={formik.values.promoPrice}
                       onChange={formik.handleChange}

@@ -243,19 +243,6 @@ function ProductSection() {
                 />
                 <span className="text-[1rem]">Feminino</span>
               </label>
-
-              <label htmlFor="unissex" className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="gender"
-                  id="unissex"
-                  value={Gender.Unissex}
-                  checked={selectedGender === Gender.Unissex}
-                  onChange={handleGenderChange}
-                  className="custom-radio"
-                />
-                <span className="text-[1rem]">Unissex</span>
-              </label>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -341,7 +328,7 @@ function ProductSection() {
           {products && products.length > 0 ? (
             <div className="w-full flex flex-col">
               {/* Versão Desktop */}
-              <ul className="flex flex-wrap items-center justify-center max-[560px]:gap-1 gap-4">
+              <ul className="w-full flex flex-wrap items-center justify-center max-[560px]:gap-1 gap-4">
                 {products.slice(0, visibleCount).map((product) => (
                   <li key={product.product.id} className="list-none">
                     <ProductFiltred dto={product} />

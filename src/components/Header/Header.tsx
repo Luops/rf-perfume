@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 // Next
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+//import Image from "next/image";
 
 // Store
 import { useAppDispatch, useAppSelector } from "@/store/store";
@@ -14,7 +14,7 @@ import { fetchLogout, fetchSession } from "@/store/slices/authSlice";
 // Core
 
 // Images
-import Logo from "@/assets/images/Logo-Moon-Perfumes-Branco-Sem-Fundo.png";
+//import Logo from "@/assets/images/Logo-Moon-Perfumes-Branco-Sem-Fundo.png";
 
 // Components
 import { Skeleton } from "../ui/skeleton";
@@ -168,11 +168,14 @@ function Header() {
             </div>
           ) : (
             <>
-              <Image src={Logo} alt="Logo" width={130} height={130} />
+              <i className="w-[150px] flex flex-col items-center justify-center text-white">
+                <h1 className="font-great text-3xl font-semibold">R & F</h1>
+                <h1 className="-mt-3 font-oswald text-lg tracking-[2px]">
+                  Perfumes
+                </h1>
+              </i>
               {/*Desktop*/}
-              <nav
-                className={`w-full max-[860px]:hidden `}
-              >
+              <nav className={`w-full max-[860px]:hidden `}>
                 <ul className="w-full flex flex-row items-center justify-end gap-3">
                   {links.map((el, index) => (
                     <li
@@ -202,7 +205,7 @@ function Header() {
               <nav className="hidden max-[860px]:block">
                 <button
                   onClick={toggleAsideWidth}
-                  className={`top-[28px] right-4 text-white ${
+                  className={`top-[28px] right-12 text-white ${
                     windowWidth < 861
                       ? isWideAside
                         ? "fixed h-screen text-xl z-[51]"
