@@ -22,8 +22,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Loja Roupas & Perfumes",
-  description: "Criado por Ellyon Tecnologia!",
+  title: "Catalogo de Perfumes - Brand Collection",
+  description: "Catálogo online de perfumes Brand Collection.",
 };
 
 export default function RootLayout({

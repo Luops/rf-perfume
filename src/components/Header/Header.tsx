@@ -159,7 +159,7 @@ function Header() {
         </div>
       </div>
       <div className="w-full bg-[#81D8D0]">
-        <div className="w-full flex flex-row mx-auto items-center justify-between py-2 px-[4rem] border-b-[1px] border-[#dadada] shadow-md">
+        <div className="w-full flex flex-row mx-auto items-center justify-between py-2 max-[480px]:px-0.5 max-[860px]:px-2 px-[4rem] border-b-[1px] border-[#dadada] shadow-md">
           {showSkeleton ? (
             <div className="w-full flex items-center justify-between py-4">
               <Skeleton className="h-10 w-20" />
@@ -205,7 +205,7 @@ function Header() {
               <nav className="hidden max-[860px]:block">
                 <button
                   onClick={toggleAsideWidth}
-                  className={`top-[28px] right-12 text-white ${
+                  className={`top-[20px] right-12 text-white ${
                     windowWidth < 861
                       ? isWideAside
                         ? "fixed h-screen text-xl z-[51]"
