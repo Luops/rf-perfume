@@ -43,11 +43,11 @@ function ProductFiltred({ dto }: { dto: ProductDTO }) {
     <article
       onClick={handleWhatsAppClick}
       key={dto.product.id}
-      className="flex flex-col justify-evenly items-start max-[420px]:w-full max-[560px]:w-[200px] max-[690px]:w-[250px] max-[940px]:w-[230px] w-[300px] p-2 font-oswald text-start cursor-pointer max-[420px]:border-b"
+      className="flex flex-col justify-evenly items-start max-[560px]:w-full max-[690px]:w-[250px] max-[940px]:w-[230px] w-[300px] font-oswald text-start cursor-pointer max-[420px]:border-b"
     >
       <div className="w-full">
         {showSkeleton ? (
-          <Skeleton className="w-[200px] max-[360px]:h-[350px] max-[500px]:h-[250px] max-[640px]:h-[350px] h-[300px]" />
+          <Skeleton className="w-full max-[500px]:h-[250px] max-[640px]:h-[280px] h-[300px]" />
         ) : (
           <Image
             src={imageSrc}
@@ -55,7 +55,7 @@ function ProductFiltred({ dto }: { dto: ProductDTO }) {
             width={500}
             height={500}
             quality={100}
-            className="w-full max-[420px]:h-[350px] max-[500px]:h-[250px] max-[640px]:h-[280px] h-[300px] rounded object-cover"
+            className="w-full max-[500px]:h-[250px] max-[640px]:h-[280px] h-[300px] rounded object-cover"
           />
         )}
 
